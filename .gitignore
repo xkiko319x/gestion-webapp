@@ -1,0 +1,11 @@
+*.pyc
+*.ipynb
+*.pdf
+*.xlsx
+
+__pycache__/
+.venv/
+
+.env
+node_modules
+.zip

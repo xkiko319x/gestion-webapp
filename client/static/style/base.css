@@ -1,0 +1,115 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 100;
+  }
+  
+  :root {
+    background-color: #fafafa;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  
+  /* Barra de navegación */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    border-bottom: #eaeaea solid 1px;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-bottom: 2px;
+  }
+  
+  .nav-elements {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  
+  .right-icons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .logout-icon {
+    margin-right: 10px;
+  }
+  
+  /* Principal de la página */
+  
+  main {
+    margin: 100px auto 0 auto;
+  }
+  
+  /* Pie de página */
+  footer {
+    margin-top: 5vh;
+    width: 100%;
+  }
+  
+  .footer-group {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-text {
+    color: #222222;
+    font-size: 12px;
+    padding: 10px;
+  }
+  
+  /* Común a los componentes */
+  
+  a {
+    color:  #1678d4;
+    text-decoration: none;
+  }
+  
+  input[type="checkbox"] {
+    appearance: unset;
+    border: #eaeaea solid 1px;
+    border-radius: 100%;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+  }
+  
+  input[type="checkbox"]:checked {
+    background: url('/static/images/check.png') no-repeat center center;
+    background-size: 32px 32px;
+  }
+  
+  .grupo-buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  button {
+    border: #1678d4 solid 2px;
+    background: #1678d4;
+    color: white;
+    width: 207px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  
+  button:hover {
+    opacity: 70%;
+    color: #eaeaea;
+    cursor: pointer;
+  }
+  
+  .cancel-button {
+    color: white;
+    background-color: rgb(220, 89, 89);
+    border: rgb(220, 89, 89) solid 1px;
+  }

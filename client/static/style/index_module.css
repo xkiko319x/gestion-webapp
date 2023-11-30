@@ -1,0 +1,33 @@
+.menu {
+    border: #eaeaea solid 1px;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+    width: 300px;
+  }
+  
+  .titulo {
+    color: #1678d4;
+    margin-bottom: 30px;
+  }
+  
+  .tools {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .link{
+    width: calc(300px - 20px);
+    border:  transparent solid 1px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .link:hover{
+    border: #eaeaea solid 1px;
+    background-color: #f7f7f7;
+  
+  }

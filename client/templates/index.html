@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Proyectos</title>
-</head>
-<body>
-    <a href="proyecto">Gestión de Proyectos</a>
-    <a href="jps">Gestión de Jefes de Proyectos</a>
-    <a href="riesgos">Gestión de Riesgo y Acciones</a>
-    <a href="login">Login</a>
-</body>
-</html>
+{% extends "base.html" %} {% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/index_module.css')}}" />{% endblock %}
+{% block title%}GP |Proyectos{% endblock %} {%block main%}
+
+
+
+<div class="menu">
+    <h1 class="titulo">Menú Gestión Proyectos</h1>
+    <br>
+    <div class="tools">
+        <a href="proyecto">Gestión de Proyectos</a>
+        <a href="jps">Gestión de Jefes de Proyectos</a>
+        <a href="riesgos">Gestión de Riesgo y Acciones</a>
+        <a href="login">Login</a>
+    </div>
+</div>
+
+{% endblock %}

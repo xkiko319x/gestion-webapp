@@ -1,7 +1,3 @@
-*.pyc
-*.ipynb
-*.pdf
-*.xlsx
 
 __pycache__/
 .venv/

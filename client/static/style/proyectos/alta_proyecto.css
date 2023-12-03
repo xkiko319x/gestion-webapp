@@ -1,0 +1,120 @@
+.titulo {
+    color: #1678d4;
+  }
+  
+  input {
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    outline: none;
+    border: #eaeaea solid 1px;
+    border-radius: 10px;
+    color: #57647e;
+    padding-left: 5px;
+  }
+  
+  textarea {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 790px;
+    height: 150px;
+    font-size: 15px;
+    padding: 5px;
+    outline: none;
+    border: #eaeaea solid 1px;
+    color: #57647e;
+    resize: none;
+    border-radius: 10px;
+  }
+  
+  .grupo-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .label-input {
+    margin-bottom: 10px;
+  }
+  
+  .texto-aclaracion {
+    font-size: 12px;
+    color: #57647e;
+  }
+  
+  .required-input {
+    color: brown;
+  }
+  
+  .inputs-3>.label-input>input {
+    width: 200px;
+  }
+  
+  #select{
+    width: 200px;
+  
+  }
+  
+  
+  
+  .label-input-probabilidad{
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  #probabilidad_imagen {
+    display: none;
+    position: absolute;
+    top: -50px;
+    left: 30px; 
+    width: 100px;
+    height: auto;
+  }
+  .emoji-container:hover img { 
+    display: inline-block;
+    z-index: auto;
+  }
+  
+  .grupo-inputs-emoji{
+    display: inline-block;
+  
+  }
+  #impacto_imagen {
+    display: none;
+    position: absolute;
+    top: -50px;
+    left: 30px; 
+    width: 100px;
+    height: auto;
+  }
+  
+  .emoji-container {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: -30px; /* Ajusta la posición del emoji a la derecha del input */
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 24px; /* Ajusta el tamaño del emoji */
+  }
+  
+  .section {
+    border: #eaeaea solid 1px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 25px;
+    width: 900px;
+    margin-bottom: 30px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

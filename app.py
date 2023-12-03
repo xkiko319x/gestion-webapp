@@ -38,8 +38,14 @@ def create_app():
     from server.proyectos.view import bp as bp_proyectos
     app.register_blueprint(bp_proyectos)
 
-    # from server.jps.view import bp as bp_jps
-    # app.register_blueprint(bp_jps)
+    from server.jps.view import bp as bp_jps
+    app.register_blueprint(bp_jps)
+
+    from server.riesgos.view import bp as bp_riesgos
+    app.register_blueprint(bp_riesgos)
+
+    from server.auth.view import bp as bp_auth
+    app.register_blueprint(bp_auth)
 
     @app.route("/")
     def index():

@@ -1,0 +1,654 @@
+{% extends "base.html" %} {% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/proyectos/riesgos.css')}}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %} {%block script %}
+<script src="{{url_for('static', filename='script/proyectos/valor_riesgo.js')}}" defer></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+{% endblock %}{%block title%}GMS | Gestión de Riesgos{% endblock %} {%block main%}
+
+<datalist id="tipo_riesgo">
+    <option value="Incidencias"></option>
+    <option value="Indicador"></option>
+    <option value="Objetivo"></option>
+    <option value="Riesgo"></option>
+    <option value="Riesgo Derivado"></option>
+
+</datalist>
+
+<datalist id="probabilidad">
+    <option value="0.9"></option>
+    <option value="0.7"></option>
+    <option value="0.5"></option>
+    <option value="0.3"></option>
+    <option value="0.1"></option>
+</datalist>
+
+<datalist id="impacto">
+    <option value="-0.8"></option>
+    <option value="-0.4"></option>
+    <option value="-0.2"></option>
+    <option value="-0.1"></option>
+    <option value="-0.05"></option>
+    <option value="0.05"></option>
+    <option value="0.1"></option>
+    <option value="0.2"></option>
+    <option value="0.4"></option>
+    <option value="0.8"></option>
+</datalist>
+
+<datalist id="estado_riesgo">
+    <option value="Activo"></option>
+    <option value="Anulado"></option>
+    <option value="Cerrado"></option>
+</datalist>
+
+<datalist id="estrategias">
+    <option value="Evitar"></option>
+    <option value="Transferir"></option>
+    <option value="Mitigar"></option>
+    <option value="Explotar"></option>
+    <option value="Compartir"></option>
+    <option value="Mejorar"></option>
+    <option value="Aceptar"></option>
+</datalist>
+
+<datalist id="estado_accion">
+    <option value="Anulada"></option>
+    <option value="Cancelada"></option>
+    <option value="En curso"></option>
+    <option value="Pendiente"></option>
+    <option value="Planificada"></option>
+
+</datalist>
+
+<datalist id="area_afectada">
+    <option value="Alcance"></option>
+    <option value="Calidad"></option>
+    <option value="Compras/Subcontratación"></option>
+    <option value="Coste"></option>
+    <option value="Información"></option>
+    <option value="Interesados"></option>
+    <option value="Personas"></option>
+    <option value="Plazo"></option>
+</datalist>
+
+<datalist id="categorias">
+    <option value="De Carácter Técnico">De Carácter Técnico</option>
+    <option value="Del Entorno">Del Entorno</option>
+    <option value="De la Organización">De la Organización</option>
+    <option value="De la Gestión del Proyecto">De la Gestión del Proyecto</option>
+    <option value="De Seguridad de Información">De Seguridad de Información</option>
+</datalist>
+
+<datalist id="tecnico">
+    <option value="Definición de requisitos">Definición de requisitos</option>
+    <option value="Disponibilidad de la Información">Disponibilidad de la Información</option>
+    <option value="Uso de la tecnologías nuevas o no aprobadas">Uso de la tecnologías nuevas o no aprobadas</option>
+    <option value="Naturaleza/complejidad de diseño">Naturaleza/complejidad de diseño</option>
+    <option value="Disponibilidad de experiencia Técnica">Disponibilidad de experiencia Técnica</option>
+    <option value="Productividad/Eficiencia del Equipo">Productividad/Eficiencia del Equipo</option>
+    <option value="Calidad de los Trabajos">Calidad de los Trabajos</option>
+
+</datalist>
+
+<datalist id="entorno">
+    <option value="Participación de Subcontratas/Consultoras">Participación de Subcontratas/Consultoras</option>
+    <option value="Uso de Normativa Específica">Uso de Normativa Específica</option>
+    <option value="Condicionantes del mercado">Condicionantes del mercado</option>
+    <option value="Relación con el Cliente (clima/expectativas)">Relación con el Cliente (clima/expectativas)</option>
+    <option value="Relación con otros Interesados Externos">Relación con otros Interesados Externos</option>
+</datalist>
+
+<datalist id="organizacion">
+    <option value="Naturaleza de la Organización">Naturaleza de la Organización</option>
+    <option value="Naturaleza del Proyecto en la Organización">Naturaleza del Proyecto en la Organización</option>
+    <option value="Condiciones Econ.-Financ. del Proy./Organización">Condiciones Econ.-Financ. del Proy./Organización
+    </option>
+</datalist>
+
+<datalist id="gestion">
+    <option value="Ambigüedad del Contrato">Ambigüedad del Contrato</option>
+    <option value="Penalizaciones Contractuales">Penalizaciones Contractuales</option>
+    <option value="Definición de Supuestos">Definición de Supuestos</option>
+    <option value="Definición de la Planificación">Definición de la Planificación</option>
+    <option value="Definición de las Estimaciones de Coste">Definición de las Estimaciones de Coste</option>
+    <option value="Realización del Control/Seguimiento del Proyecto">Realización del Control/Seguimiento del Proyecto
+    </option>
+    <option value="Gestión de las Comunicaciones">Gestión de las Comunicaciones</option>
+    <option value="Disponibilidad de Recursos">Disponibilidad de Recursos</option>
+    <option value="Ubicación del Equipo de Trabajo">Ubicación del Equipo de Trabajo</option>
+</datalist>
+
+<datalist id="informacion">
+    <option value="Desastres Naturales">Desastres Naturales</option>
+    <option value="Origen Industrial">Origen Industrial</option>
+    <option value="Errores y Fallos Intencionados">Errores y Fallos Intencionados</option>
+    <option value="Ataques Intencionados">Ataques Intencionados</option>
+</datalist>
+
+<datalist id="riesgos">
+    {%for i in codigos_riesgo_asociado['codes']%}
+    <option value="{{i.Code}}">{{i.Efecto}}</option>{%endfor%}
+</datalist>
+
+<!-- BLOQUES ACCIONES DE RIESGOS -->
+<div class="section">
+    <div class="cabecera_riesgos">
+        <h2>Acciones Riesgos</h2>
+    </div>
+    <div class="boton_nuevo_riesgo">
+        <button type="button" class="button" data-modal="modalOne">Nuevo Riesgo</button>
+        <button type="button" class="button" data-modal="modalTwo">Añadir Acción</button>
+    </div>
+</div>
+
+<!-- FORMULARIO NUEVO RIESGO + ACCION -->
+<div id="modalOne" class="modal">
+    <div class="modal-content1">
+        <div class="contact-form1">
+            <form id="nuevo_riesgo_form" action="">
+                <div class="fomulario-modal1">
+                    <div class="section-cabecera">
+                        <h2 class="titulo">Formulario Nuevo Riesgo</h2>
+                    </div>
+
+                    <div class="section" id="aclaracion-nuevo-riesgo" name="aclaracion-nuevo-riesgo" style="display: none;">
+                        <h3 style="color: red;">Debe establecer una acción para el nivel de riesgo actual. </h3>
+                    </div>
+
+                    <div class="container">
+                        <div class="section-1" style="margin-right: 10px;">
+                            <h2 class="titulo">Datos del Riesgo</h2>
+                            <br>
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4>Fecha detección</h4>
+                                    <input class="input-formulario" type="date" id="fecha_nuevo_riesgo"
+                                        autocomplete="off" />
+                                </div>
+                                <div class="label-input">
+                                    <h4>Tipo </h4>
+                                    <input class="input-formulario" type="text" id="tipo_riesgo_nuevo" list="tipo_riesgo"
+                                        autocomplete="off" />
+
+                                </div>
+                            </div>
+
+                            <!-- bloque de causa-categoria y subcategoria-probabilidad -->
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4>Causa</h4>
+                                    <input class="input-formulario" type="text" id="causa_riesgo_nuevo"
+                                        autocomplete="off" />
+                                </div>
+
+                                <div class="label-input">
+                                    <h4>Categoría</h4>
+                                    <select name="categoria_riesgo_nuevo" id="categoria_riesgo_nuevo"
+                                        name="categoria_riesgo_nuevo" class="categorias" onchange="subcategorias_riesgo();">
+                                        <option value="">Seleccione una Categoría</option>
+                                        <option value="De Carácter Técnico">De Carácter Técnico</option>
+                                        <option value="Del Entorno">Del Entorno</option>
+                                        <option value="De la Organización">De la Organización</option>
+                                        <option value="De la Gestión del Proyecto">De la Gestión del Proyecto</option>
+                                        <option value="De Seguridad de Información">De Seguridad de Información</option>
+                                    </select>
+                                    <select id="subcategoria_riesgo_nuevo" name="subcategoria_riesgo_nuevo"
+                                        id="subcategoria_riesgo_nuevo" class="subcategorias">
+                                        <option value="">Seleccione una Subcategoría</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grupo-inputs">
+                                <div class="label-input-probabilidad">
+                                    <h4>Probabilidad</h4>
+                                    <input class="input-formulario" type="number" step="any"
+                                        name="probabilidad_riesgo_nuevo" id="probabilidad_riesgo_nuevo" list="probabilidad"
+                                        autocomplete="off" />
+
+                                    <div class="emoji_container">
+                                        <a href="#">
+                                            <span>&#x2753;</span>
+                                        </a>
+                                        <div class="ayuda_probabilidad">
+                                            <img id="probabilidad_imagen"
+                                                src="{{url_for('static', filename='images/gestion_riesgos/probabilidad_mouseover.png')}}"
+                                                alt="Ejemplo">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4>Efecto </h4>
+                                    <input class="input-formulario" type="text" name="efecto_riesgo_nuevo"
+                                        id="efecto_riesgo_nuevo" autocomplete="off" />
+                                </div>
+                                <div class="label-input">
+                                    <h4>Área Afectada</h4>
+                                    <input class="input-formulario" type="text" name="area_afectada_nuevo"
+                                        id="area_afectada_nuevo" list="area_afectada" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4>Impacto</h4>
+                                    <input class="input-formulario" type="number" step="any" name="impacto_riesgo_nuevo"
+                                        id="impacto_riesgo_nuevo" list="impacto" autocomplete="off" />
+                                    <div class="emoji_container2">
+                                        <a href="#">
+                                            <span>&#x2753;</span>
+                                        </a>
+                                        <div class="ayuda_impacto">
+                                            <img id="impacto_imagen"
+                                                src="{{url_for('static', filename='images/gestion_riesgos/impacto_mouseover.png')}}"
+                                                alt="Ejemplo">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4>Valor del riesgo </h4>
+                                    <input class="input-formulario" type="number" step="any" name="valor_riesgo_nuevo"
+                                        id="valor_riesgo_nuevo" disabled />
+                                </div>
+
+                                <div class="label-input">
+                                    <h4>Nivel</h4>
+                                    <input class="input-formulario" type="text" name="nivel_riesgo_nuevo"
+                                        id="nivel_riesgo_nuevo" disabled />
+                                </div>
+                            </div>
+
+                            <!-- meter en versión más avanzada
+                                <div class="label-input">
+                                <h4>Impacto Económico</h4>
+                                <input type="number" name="ie_nuevo" id="ie_nuevo" disabled />
+                            </div> -->
+
+                        </div>
+                        <div class="section-1">
+                            <h2 class="titulo">Datos de la Acción</h2>
+                            <br>
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4 id="estrategia_titulo">Estrategia de respuesta</h4>
+                                    <input class="input-formulario" type="text" 
+                                        id="estrategia_riesgo_nuevo1" list="estrategias" autocomplete="off" />
+                                </div>
+
+                                <div class="label-input">
+                                    <h4 id="actividades_titulo">Actividades de respuesta </h4>
+                                    <input class="input-formulario" type="text" 
+                                        id="actividades_riesgo_nuevo1" autocomplete="off" />
+                                </div>
+                            </div>
+
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4 id="responsable_titulo">Responsable del tratamiento</h4>
+                                    <input class="input-formulario" type="text" 
+                                        id="responsable_riesgo_nuevo1" autocomplete="off" />
+                                </div>
+                                <div class="label-input">
+                                    <h4 id="estado_accion_titulo">Estado Acción</h4>
+                                    <input class="input-formulario" type="text" 
+                                        id="estado_accion_nuevo1" list="estado_accion" autocomplete="off" />
+                                </div>
+                            </div>
+
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4 id="probabilidad_titulo">Probabilidad respuesta</h4>
+                                    <input class="input-formulario" type="number" step="any"
+                                        name="probabilidad_respuesta_riesgo_nuevo1" id="probabilidad_respuesta_riesgo_nuevo1"
+                                        list="probabilidad" autocomplete="off" />
+                                </div>
+
+                                <div class="label-input">
+                                    <h4 id="impacto_titulo">Impacto respuesta</h4>
+                                    <input class="input-formulario" type="number" step="any"
+                                        name="impacto_respuesta_riesgo_nuevo1" id="impacto_respuesta_riesgo_nuevo1"
+                                        list="impacto" autocomplete="off" />
+                                </div>
+                            </div>
+
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4 id="valor_titulo">Valor del riesgo de la respuesta</h4>
+                                    <input class="input-formulario" type="number" step="any"
+                                        name="valor_respuesta_riesgo_nuevo1" id="valor_respuesta_riesgo_nuevo1" disabled />
+                                </div>
+
+                                <div class="label-input">
+                                    <h4 id="nivel_titulo">Nivel de acción </h4>
+                                    <input class="input-formulario" type="text" name="nivel_riesgo_nuevo_respuesta1"
+                                        id="nivel_riesgo_nuevo_respuesta1" disabled />
+                                </div>
+                            </div>
+
+                            <div class="grupo-inputs">
+                                <div class="label-input">
+                                    <h4 id="residual_titulo">Riesgo residual</h4>
+                                    <input class="input-formulario" type="text" name="residual_riesgo_nuevo1"
+                                        id="residual_riesgo_nuevo1" autocomplete="off" />
+                                </div>
+
+                                <div class="label-input">
+                                    <h4 id="estado_riesgo_titulo">Estado del riesgo</h4>
+                                    <input class="input-formulario" type="text" name="estado_riesgo_nuevo1"
+                                        id="estado_riesgo_nuevo1" list="estado_riesgo" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-2">
+                        <div class="grupo-buttons-2">
+                            <button type="submit" class="botones-nuevo-riesgo" style="margin-right: 50px;">Guardar Acción</button>
+                            <button class="botones-nuevo-riesgo" type="button" id="cancel-accion"
+                                onclick="cancelar_riesgo()">Cancelar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- FORMULARIO NUEVA ACCION -->
+<div id="modalTwo" class="modal">
+    <div class="modal-content">
+        <div class="contact-form">
+            <div class="fomulario-modal">
+                <form id="nueva_accion_form" action="">
+                    <div class="section-2">
+                        <div class="section-cabecera">
+                            <div class="label-input">
+                                <h2 class="titulo" style="padding-top: 30px;">Formulario Nueva Acción</h2>
+                            </div>
+                            <div class="label-input-2">
+                                <h4>Riesgo Asociado<span class="required-input">*</span></h4>
+                                <input class="input-formulario" type="text" name="riesgo_asociado" id="riesgo_asociado" list="riesgos"
+                                    autocomplete="off" placeholder="Seleccione el riesgo" required/>
+                            </div>
+                        </div>
+                        <div class="grupo-inputs-2">
+                            <div class="label-input-2">
+                                <h4>Estrategia de respuesta</h4>
+                                <input class="input-formulario" type="text" name="estrategia_riesgo_nuevo" id="estrategia_riesgo_nuevo"
+                                    list="estrategias" autocomplete="off" />
+                            </div>
+                            <div class="label-input-2">
+                                <h4>Actividades de respuesta </h4>
+                                <input class="input-formulario" type="text" name="actividades_riesgo_nuevo"
+                                    id="actividades_riesgo_nuevo" autocomplete="off" />
+                            </div>
+                        </div>
+                
+                        <div class="grupo-inputs-2">
+                            <div class="label-input-2">
+                                <h4>Responsable del tratamiento</h4>
+                                <input class="input-formulario" type="text" name="responsable_riesgo_nuevo"
+                                    id="responsable_riesgo_nuevo" autocomplete="off" />
+                            </div>
+                
+                            <div class="label-input-2">
+                                <h4>Estado Acción</h4>
+                                <input class="input-formulario" type="text" name="estado_accion_nuevo" id="estado_accion_nuevo"
+                                    list="estado_accion" autocomplete="off" />
+                            </div>
+                        </div>
+                
+                        <div class="grupo-inputs-2">
+                            <div class="label-input-2">
+                                <h4>Probabilidad respuesta</h4>
+                                <div>
+                                    <input class="input-formulario" type="number" step="any" name="probabilidad_respuesta_riesgo_nuevo"
+                                        id="probabilidad_nueva_acccion" list="probabilidad" autocomplete="off" />
+                                    <div class="emoji_container">
+                                        <a href="#">
+                                            <span>&#x2753;</span>
+                                        </a>
+                                        <div class="ayuda_probabilidad">
+                                            <img id="probabilidad_imagen"
+                                                src="{{url_for('static', filename='images/gestion_riesgos/probabilidad_mouseover.png')}}"
+                                                alt="Ejemplo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="grupo-inputs-2">
+                            <div class="label-input-2">
+                                <h4>Impacto respuesta</h4>
+                                <div>
+                                    <input class="input-formulario" type="number" step="any" name="impacto_respuesta_riesgo_nuevo"
+                                        id="impacto_nueva_accion" list="impacto" autocomplete="off" />
+                
+                                    <div class="emoji_container2">
+                                        <a href="#">
+                                            <span>&#x2753;</span>
+                                        </a>
+                                        <div class="ayuda_impacto">
+                                            <img id="impacto_imagen"
+                                                src="{{url_for('static', filename='images/gestion_riesgos/impacto_mouseover.png')}}"
+                                                alt="Ejemplo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="grupo-inputs-2">
+                            <div class="label-input-2">
+                                <h4>Valor del riesgo de la respuesta</h4>
+                                <input class="input-formulario" type="number" step="any" name="valor_nueva_accion"
+                                    id="valor_nueva_accion" disabled />
+                            </div>
+                            <div class="label-input-2">
+                                <h4>Nivel de riesgo </h4>
+                                <input class="input-formulario" type="text" name="nivel_riesgo_nuevo_respuesta" id="nivel_nueva_accion"
+                                    disabled />
+                            </div>
+                        </div>
+                
+                        <div class="grupo-inputs-2">
+                            <div class="label-input-2">
+                                <h4>Riesgo residual</h4>
+                                <input class="input-formulario" type="text" name="residual_riesgo_nuevo" id="residual_riesgo_nuevo"
+                                    autocomplete="off" />
+                            </div>
+                
+                            <div class="label-input-2">
+                                <h4>Estado del riesgo</h4>
+                                <input class="input-formulario" type="text" name="estado_riesgo_nuevo" id="estado_riesgo_nuevo"
+                                    list="estado_riesgo" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="section-2">
+                        <div class="grupo-buttons-2">
+                            <button type="submit" style="margin-right: 50px;">Guardar Acción</button>
+                            <button type="button" id="cancel-accion" onclick="cancelar_accion()">Cancelar</button>
+                
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- BLOQUE DE VISUALIZACION DE REGISTROS DE RIESGOS  -->
+<form method="get">
+    <div class="section">
+        <div class="label-input">
+            <h2 style="padding-top: 20px;">Registro de Riesgos</h2>
+        </div>
+
+        <div class="label-input">
+            <h2 style="text-align: center;">Proyecto</h2>
+
+            <input type="text" value="{{context['Proyecto']['Code']}}" id="id_proyecto" disabled>
+        </div>
+        <div class="label-input">
+            <h2 style="text-align: center;">Presupuesto Proyecto</h2>
+
+            <!-- PRUEBA DE VALUE = 10000 PARA EL PRESUPUESTO DEL PROYECTO -->
+            <input type="number" value="10000" id="presupuesto_proyecto" disabled>
+            <!-- PRUEBA DE VALUE = 10000 PARA EL PRESUPUESTO DEL PROYECTO -->
+        </div>
+    </div>
+    <div class="section-table">
+        <div class="section" id="cabecera_tabla_riesgos">
+            <div class="filtro">
+                <h2>Filtro por Código de Riesgo</h2>
+                <input type="number" id="code_buscar" placeholder="Código a buscar" onkeyup="filtrar_codigo()">
+            </div>
+            
+                <div class="filtro">
+                    <h2 >Impacto Económico Total (IETotal en €):</h2>
+                    <input type="number" value="" id="ie_total" readonly>
+                </div>
+
+        </div>
+        
+        <table cellspacing="0" id="tabla_riesgos">
+            <tr>
+                <th>Código Riesgo</th>
+                <th>Fecha Detección</th>
+                <th>Tipo</th>
+                <th>Causa (Riesgo/Objetivo)</th>
+                <th>Categoría</th>
+                <th>Subcategoría</th>
+                <th>Probabilidad</th>
+                <th>Efecto (Descripción Riesgo/Meta)</th>
+                <th>Área Afectada</th>
+                <th>Impacto</th>
+                <th>Valor del Riesgo</th>
+                <th>Nivel de Riesgo/Objetivo</th>
+                <th>Impacto Económico(€)</th>
+                <th>Editar Riesgo</th>
+                <th>Actualizar Riesgo</th>
+                <th>Borrar Riesgo</th>
+            </tr>
+            
+            {%for riesgo in context['Riesgos'] %}
+
+            <tr>
+                <td><input type="text" id="id-{{i}}" value="{{riesgo['Code']}}" readonly disabled /></td>
+                <td><input type="date" id="fecha-{{i}}" value="{{riesgo['Fecha deteccion']}}" readonly /></td>
+                <td><input type="text" id="tipo-{{i}}" value="{{riesgo['Tipo']}}" list="tipo_riesgo" readonly /></td>
+                <td><textarea id="causa-{{i}}" rows="3" readonly>{{riesgo['Causa']}}</textarea></td>
+                <td><input type="text" class="categorias" id="categoria-{{i}}" value="{{riesgo['Categoria']}}"
+                        list="categorias" readonly></td>
+                <td><input type="text" class="subcategorias" id="subcategoria-{{i}}" value="{{riesgo['Subcategoria']}}"
+                        list="" readonly style="width: 375px;"></td>
+                <td><input type="number" id="prob-{{i}}" class="probabilidades" value="{{riesgo['Probabilidad']}}"
+                        list="probabilidad" readonly /></td>
+                <td><textarea id="efecto-{{i}}" rows="3" readonly>{{riesgo['Efecto']}}</textarea></td>
+                <td><input type="text" id="area_afectada" value="{{riesgo['Area Afectada']}}" list="area_afectada"
+                        readonly /></td>
+                <td><input type="number" id="impt-{{i}}" class="impactos" value="{{riesgo['Impacto']}}" list="impacto"
+                        readonly /></td>
+                <td><input type="number" id="resultado-{{i}}" value="{{riesgo['Valor riesgo']}}" class="resultado"
+                        readonly disabled></td>
+                <td><input type="text" id="nivel_riesgo-{{i}}" value="{{riesgo['Nivel Riesgo']}}" class="nivel_riesgo"
+                        readonly disabled /></td>
+
+                <!-- impacto economico -->
+                <td>
+                    <input type="number" id="impacto_economico-{{i}}" value="{{riesgo['Impacto Economico']}}"
+                        class="impactos_economicos" readonly>
+                </td>
+
+                <td><button class="botones_riesgos" type="button" onclick="editar_riesgo(this)"> Editar Riesgo</td>
+                <td><button class="botones_riesgos" type="button" id="{{riesgo['id_meta']}}"
+                        onclick="actualizar_riesgo(this)">Actualizar Riesgo</button></td>
+                <td><button class="botones_riesgos" type="button" id="{{riesgo['id_meta']}}"
+                        onclick="borrar_riesgo(this)">Borrar Riesgo</button></td>
+
+                <!-- id de la pagina de notion -> asociar campos de la tabla para delete/update -->
+                <td id="columna_id_meta">
+                    <p id="id_p_id_meta" name="{{riesgo['id_meta']}}"></p>
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+</form>
+
+<!-- BLOQUE DE VISUALIZACION DE RESPUESTA DE RIESGOS  -->
+<form method="get">
+    <div class="section">
+        <h2>Acciones de Respuesta</h2>
+    </div>
+    <!-- <div class="section" id="texto-borrar">
+        <h2 style="color: red;">Acciones asociadas al riesgo eliminadas</h2>
+    </div> -->
+    <div class="section-table">
+        <table cellspacing="0" id="tabla_respuestas_riesgos">
+            <tr>
+                <th>Código Acción</th>
+                <th>Riesgo Asociado</th>
+                <th>Estrategia de Respuesta</th>
+                <th>Actividades de Respuesta planificadas</th>
+                <th>Responsable del Tratamiento del Riesgo (Respuesta, Control y Cierre)</th>
+                <th>Probabilidad Acción</th>
+                <th>Impacto Acción</th>
+                <th>Valor de la Acción</th>
+                <th>Nivel de Acción</th>
+                <th>Estado Acción</th>
+                <th>Riesgo Residual</th>
+                <th>Estado del Riesgo</th>
+            </tr>
+            
+            {%for accion in context['Acciones'] %}
+            <tr>
+                <td><input type="text" id="id_item" value="{{accion['Code']}}" readonly disabled /></td>
+                <td><input type="text" id="riesgo_asociado" value="{{accion['Riesgo Asociado']}}" readonly disabled />
+                </td>
+                <td><input type="text" id="estrategia" value="{{accion['Estrategia de Respuesta al Riesgo']}}"
+                        list="estrategias" readonly /></td>
+                <td><textarea id="actividades" rows="3"
+                        readonly>{{accion['Actividades de Respuesta Planificadas']}}</textarea></td>
+                <td><input type="text" id="responsable" value="{{accion['Responsable del tratamiento']}}" autocomplete="off" readonly />
+                </td>
+                <td><input type="number" id="probabilidad" class="probabilidades_respuesta"
+                        value="{{accion['Probabilidad respuesta']}}" list="probabilidad" readonly /></td>
+                <td><input type="number" id="impacto" class="impactos_respuesta" value="{{accion['Impacto respuesta']}}"
+                        list="impacto" readonly />
+                <td><input type="number" id="valorRiesgo" class="valor_riesgo_respuesta"
+                        value="{{accion['Valor riesgo respuesta']}}" readonly disabled></td>
+                <td><input type="text" id="nivelRiesgo" class="nivel_respuesta"
+                        value="{{accion['Nivel Riesgo Respuesta']}}" readonly disabled /></td>
+                <td><input type="text" id="estado_accion" value="{{accion['Estado Accion']}}" list="estado_accion" autocomplete="off" 
+                        readonly />
+                <td><input type="text" id="riesgoResidual" value="{{accion['Riesgo residual']}}" autocomplete="off"  readonly></td>
+                <td><input type="text" id="estadoRiesgo" value="{{accion['Estado del riesgo']}}" list="estado_riesgo" autocomplete="off" 
+                        readonly></td>
+                <!-- id de la pagina de notion -> asociar campos de la tabla para delete/update -->
+                <td id="columna_id_meta"><input type="text" id="id_p_id_meta" value="{{accion['id_meta']}}"></td>
+            </tr>
+
+            {%endfor%}
+        </table>
+    </div>
+</form>
+{%endblock%}

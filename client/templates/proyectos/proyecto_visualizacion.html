@@ -1,35 +1,70 @@
 {% extends "base.html" %} {% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='style/index_module.css')}}" />{% endblock %}
-{% block title%}GP |Lista Proyectos{% endblock %} {%block main%}
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>{% endblock %}
 
-<div class="container mt-5">
-    <h2>Lista de Proyectos</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>JP</th>
-                <th>Cliente</th>
-                <th>Trabajadores</th>
-                <th>Servicio</th>
-                <th>Fecha de Inicio</th>
-                <th>Fecha de Fin</th>
-                <th>Fecha de Fin Prevista</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for proyecto in proyectos %}
-            <tr>
-                <td>{{ proyecto['jp'] }}</td>
-                <td>{{ proyecto['cliente'] }}</td>
-                <td>{{ proyecto['trabajadores'] }}</td>
-                <td>{{ proyecto['servicio'] }}</td>
-                <td>{{ proyecto['fecha_inicio'] }}</td>
-                <td>{{ proyecto['fecha_fin'] }}</td>
-                <td>{{ proyecto['fecha_fin_prevista'] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+{% block script %}
+ <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+ <script src="{{url_for('static', filename='script/proyectos/editar_proyecto.js')}}" defer></script>
+{% endblock %} 
+{% block title%}GP | Información Proyecto{% endblock %} {%block main%}
+ 
+<datalist id="jps">
+    {%for i in jps %}
+    <option value="{{i}}">{%endfor%}</option>
+</datalist>
+
+<datalist id="clientes">
+    {%for i in clientes %}
+    <option value="{{i}}">{%endfor%}</option>
+</datalist>
+
+<datalist id="trabajador">
+    {%for i in trabajador %}
+    <option value="{{i}}">{%endfor%}</option>
+</datalist>
+
+
+<div class="container ">
+    <h2>Información Proyecto</h2>
+    <form method="post" action="" id="formulario_proyecto_editar">
+        <div class="form-group">
+            <label for="codigo_proyecto">Código Proyecto:</label>
+            <input type="text" class="form-control" id="codigo_proyecto" name="codigo_proyecto" autocomplete="off" value="{{info['info']['Code']}}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="jp">JP:</label>
+            <input type="text" class="form-control" id="jp" name="jp" list="jps" autocomplete="off" value="{{info['jp']}}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="cliente">Cliente:</label>
+            <input type="text" class="form-control" id="cliente" list="clientes" name="cliente" autocomplete="off" value="{{info['cliente']}}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="trabajadores">Trabajadores:</label>
+            <input type="text" class="form-control" id="trabajadores" list="trabajador" name="trabajadores" value="{{info['trabajador']}}" autocomplete="off" disabled >
+        </div>
+        <div class="form-group">
+            <label for="servicio">Servicio:</label>
+            <input type="text" class="form-control" id="servicio" name="servicio" autocomplete="off" value="{{info['info']['Servicio']}}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha de Inicio:</label>
+            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" autocomplete="off" value="{{info['info']['Fecha Inicio']}}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="fecha_fin">Fecha de Fin:</label>
+            <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" autocomplete="off" value="{{info['info']['Fecha Fin']}}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="fecha_fin_prevista">Fecha de Fin Prevista:</label>
+            <input type="date" class="form-control" id="fecha_fin_prevista" name="fecha_fin_prevista" autocomplete="off" value="{{info['info']['Fecha Fin Prevista']}}" disabled>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Proyecto</button>
+        <button type="button" onclick="editar_proyecto()" class="btn btn-primary">Editar Proyecto</button>
+        <button type="button" onclick="location.href='/proyecto'" class="btn btn-danger">Volver</button>
+
+    </form>
 </div>
 
 {% endblock %}

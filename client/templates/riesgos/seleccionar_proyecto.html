@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/proyectos/alta_proyecto.css')}}" />{% endblock %}
+{% block title%}GMS | Proyectos{% endblock %} {%block main%}
+
+<datalist id="proyectos">
+  {%for i in context['proyectos']%}
+  <option value="{{i}}">{%endfor%}</option>
+</datalist>
+
+<form action="" method="post" autocomplete="off">
+  <div class="section">
+    <h2 class="titulo">Proyectos</h2>
+  </div>
+
+  <div class="section">
+    <div class="grupo-inputs">
+      <div class="label-input">
+        <h4>Proyecto</h4>
+        <input type="text" name="proyecto" list="proyectos" style="text-transform:uppercase"/>
+      </div>
+    </div>
+  </div>
+  <div class="grupo-buttons section">
+    <button type="submit">Continuar</button>
+    <button type="button" onclick="location.href='/proyecto'" class="cancel-button">
+      Cancelar
+    </button>
+  </div>
+</form>
+{%endblock%}

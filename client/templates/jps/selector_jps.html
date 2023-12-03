@@ -1,27 +1,26 @@
-
-
 {% extends "base.html" %} {% block css %}
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>{% endblock %}
  {% block scripts %}
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-{% endblock %} {% block title%}GP | Eliminar JP {% endblock %} {%block main%}
+{% endblock %} {% block title%}GP | Ver JP {% endblock %} {%block main%}
 
 <datalist id="jps">
-    {%for i in context %}
+    {%for i in jps %}
     <option value="{{i}}">{%endfor%}</option>
 </datalist>
 
 <div class="container mt-5">
-    <h2>Eliminar JP</h2>
-    <form method="post" action=" ">
+    <h2>Información del JP</h2>
+    <form method="post" action="">
         <div class="form-group" style="display: grid;">
-            <label for="jp">Selecciona el JP a eliminar:</label>
-            <input type="text" name="jp_eliminar" id="jp_eliminar" required list="jps">
+            <label for="jp">Selecciona el JP para ver su información:</label>
+            <input id="jp" name="jp" autocomplete="off" list="jps" required />
         </div>
-        <button type="submit" class="btn btn-danger">Eliminar JP</button>
+        <button type="submit" class="btn btn-primary">Ver Información</button>
         <button type="button" onclick="location.href='/jps'" class="btn btn-danger">Volver</button>
+
     </form>
 </div>
     

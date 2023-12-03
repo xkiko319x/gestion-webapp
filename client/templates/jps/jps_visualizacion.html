@@ -1,33 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Ver Jefes de Proyecto</title>
-</head>
-<body>
-    <div class="container mt-5">
-        <h2>Lista de Jefes de Proyecto</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Proyecto</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-    
-                </tr>
-            </tbody>
-        </table>
-    </div>
+{% extends "base.html" %} {% block css %}
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>{% endblock %}
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+ {% block script %}
+ <script src="{{url_for('static', filename='script/jps/editar_jp.js')}}" defer></script>
+
+{% endblock %} {% block title%}GP | Información JP{% endblock %} {%block main%}
+
+<div class="container">
+    <h2>Información Jefe de Proyecto</h2>
+    <form method="post" action="">
+        <div class="form-group">
+            <label for="id_jp">Código JP:</label>
+            <input type="text" class="form-control" id="id_jp" name="id_jp" value="{{info['id']}}" disabled >
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{info['nombre']}}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{info['email']}}" disabled>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Jefe de Proyecto</button>
+        <button type="button" onclick="editar_jp()" class="btn btn-primary">Editar JP</button>
+        <button type="button" onclick="location.href='/jps'" class="btn btn-danger">Volver</button>
+    </form>
+</div>
+    
+{% endblock %}

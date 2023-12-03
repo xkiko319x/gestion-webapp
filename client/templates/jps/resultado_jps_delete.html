@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Eliminación Exitosa</title>
-</head>
-<body>
-    <div class="container mt-5">
-        <h2>Eliminación Exitosa</h2>
-        <p>El proyecto ha sido eliminado con éxito.</p>
-        <a href="index" class="btn btn-primary">Volver a la lista de proyectos</a>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% extends "base.html" %} {% block css %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %} {% block title%}GP | Eliminado JP{% endblock %} {%block main%}
+
+<div class="container mt-5">
+    <h2>Eliminación Exitosa</h2>
+    <p>El JP ha sido eliminado con éxito.</p>
+    <a href="/" class="btn btn-primary">Volver</a>
+</div>
+
+
+{% endblock %}

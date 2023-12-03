@@ -7,36 +7,55 @@
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 {% endblock %} {% block title%}GP | Nuevo Proyecto{% endblock %} {%block main%}
 
+<datalist id="jps">
+    {%for i in jps %}
+    <option value="{{i}}">{%endfor%}</option>
+</datalist>
+
+<datalist id="clientes">
+    {%for i in clientes %}
+    <option value="{{i}}">{%endfor%}</option>
+</datalist>
+
+<datalist id="trabajador">
+    {%for i in trabajador %}
+    <option value="{{i}}">{%endfor%}</option>
+</datalist>
+
 <div class="container ">
     <h2>Nuevo Proyecto</h2>
     <form method="post" action="">
         <div class="form-group">
+            <label for="codigo_proyecto">Código Proyecto:</label>
+            <input type="text" class="form-control" id="codigo_proyecto" name="codigo_proyecto" autocomplete="off" required>
+        </div>
+        <div class="form-group">
             <label for="jp">JP:</label>
-            <input type="text" class="form-control" id="jp" name="jp" required>
+            <input type="text" class="form-control" id="jp" name="jp" list="jps" autocomplete="off" required>
         </div>
         <div class="form-group">
             <label for="cliente">Cliente:</label>
-            <input type="text" class="form-control" id="cliente" name="cliente" >
+            <input type="text" class="form-control" id="cliente" list="clientes" name="cliente" autocomplete="off">
         </div>
         <div class="form-group">
             <label for="trabajadores">Trabajadores:</label>
-            <input type="text" class="form-control" id="trabajadores" name="trabajadores" >
+            <input type="text" class="form-control" id="trabajadores" list="trabajador" name="trabajadores" autocomplete="off" >
         </div>
         <div class="form-group">
             <label for="servicio">Servicio:</label>
-            <input type="text" class="form-control" id="servicio" name="servicio" >
+            <input type="text" class="form-control" id="servicio" name="servicio" autocomplete="off" >
         </div>
         <div class="form-group">
             <label for="fecha_inicio">Fecha de Inicio:</label>
-            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio">
+            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" autocomplete="off">
         </div>
         <div class="form-group">
             <label for="fecha_fin">Fecha de Fin:</label>
-            <input type="date" class="form-control" id="fecha_fin" name="fecha_fin">
+            <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" autocomplete="off">
         </div>
         <div class="form-group">
             <label for="fecha_fin_prevista">Fecha de Fin Prevista:</label>
-            <input type="date" class="form-control" id="fecha_fin_prevista" name="fecha_fin_prevista">
+            <input type="date" class="form-control" id="fecha_fin_prevista" name="fecha_fin_prevista" autocomplete="off">
         </div>
         <button type="submit" class="btn btn-primary">Guardar Proyecto</button>
         <button type="button" onclick="location.href='/proyecto'" class="btn btn-danger">Volver</button>

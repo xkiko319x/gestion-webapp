@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jefes de Proyecto</title>
-</head>
-<body>
-    <div>
-        <h1>Jefes de Proyecto</h1>
-        <div >
+
+{% extends "base.html" %} {% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/index_module.css')}}" />{% endblock %}
+{% block title%}GP | JPS Menú{% endblock %} {%block main%}
+
+      <div class="menu">
+        <h1 class="titulo">Menú Gestión JP</h1>
+        <br>
+        <div class="tools">
           <a href="jps/create">Crear Nuevo JP</a>
-          <a href="jps/view">Editar JP</a>
+          <a href="jps/view">Ver JP</a>
           <a href="jps/delete">Eliminar JP</a>
         </div>
-      </div>
-</body>
-</html>
+    </div>
+    
+    {% endblock %}

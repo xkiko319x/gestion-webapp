@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='style/proyectos/alta_proyecto.css')}}" />{% endblock %}
-{% block title%}GMS | Proyectos{% endblock %} {%block main%}
+{% block title%}APP | Proyectos{% endblock %} {%block main%}
 
 <datalist id="proyectos">
   {%for i in context['proyectos']%}

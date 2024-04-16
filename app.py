@@ -33,7 +33,6 @@ def create_app():
     #     user = User.get_user_id(user_id)
     #     return user
 
-    # Importamamos la vista dedicada a la identificacióin y autorización
 
     from server.proyectos.view import bp as bp_proyectos
     app.register_blueprint(bp_proyectos)

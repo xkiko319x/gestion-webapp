@@ -234,7 +234,7 @@ function actualizar_riesgo(boton) {
     const id_proyecto1 = url_id_proyecto1.split('/').slice(3)
     let url = "http://127.0.0.1:5010/proyectos/gestion_riesgos/" + id_proyecto1 + "/update"
 
-    // primero pasa por el gms y luego se sube a notion
+    // primero pasa por el app y luego se sube a notion
     var confirmacion = window.confirm("¿Estás seguro de actualizar los valores?")
     if (confirmacion === true) {
         // llama a fetch para actualizar el registro
@@ -1866,7 +1866,7 @@ function actualizar_riesgo_creado(event) {
     const id_proyecto1 = url_id_proyecto1.split('/').slice(3)
     let url = "http://127.0.0.1:5010/proyectos/gestion_riesgos/" + id_proyecto1 + "/update"
 
-    // primero pasa por el gms y luego se sube a notion
+    // primero pasa por el app y luego se sube a notion
     var confirmacion = window.confirm("¿Estás seguro de actualizar los valores?")
     if (confirmacion === true) {
         // llama a fetch para actualizar el registro

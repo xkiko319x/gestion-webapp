@@ -4,7 +4,6 @@ from os import path
 Usando un patrón de producción"""
 import os
 
-from flask_login import LoginManager, login_required
 
 # from server.auth.model import User
 

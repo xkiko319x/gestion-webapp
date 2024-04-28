@@ -3,7 +3,7 @@
 {% block title%}APP | Proyectos{% endblock %} {%block main%}
 
 <datalist id="proyectos">
-  {%for i in context['proyectos']%}
+  {%for i in data %}
   <option value="{{i}}">{%endfor%}</option>
 </datalist>
 

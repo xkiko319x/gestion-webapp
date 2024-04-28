@@ -5,7 +5,6 @@ from os import path
 Usando un patrón de producción"""
 import os
 
-from flask import Flask, render_template
 from flask_login import LoginManager, login_required
 
 # from server.auth.model import User
@@ -52,24 +51,6 @@ def create_app():
         return render_template("index.html")
 
     return app
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

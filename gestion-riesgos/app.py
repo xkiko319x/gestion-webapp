@@ -52,7 +52,7 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=63532)
+    app.run(host="0.0.0.0", port=8000)
 
 
 # def create_app():

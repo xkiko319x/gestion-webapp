@@ -1,3 +1,3 @@
-const HOST = '127.0.0.1';
+const HOST = 'https://app-gestion-riesgos.azurewebsites.net/';
 
 export { HOST };

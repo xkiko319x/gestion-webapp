@@ -10,4 +10,4 @@ if __name__ == "__main__":
     logging.basicConfig(level="DEBUG")
 
     app = create_app()
-    app.run(debug=True, host="127.0.0.1", port=5000)
+    app.run(debug=False, host="https://app-gestion-riesgos.azurewebsites.net/")

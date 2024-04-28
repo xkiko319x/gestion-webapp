@@ -79,7 +79,7 @@
 //     const url_id_proyecto = window.location.pathname;
 //     const id_proyecto = url_id_proyecto.split('/').slice(3)
 
-//     let url = "http://127.0.0.1:5010/riesgos/gestion_riesgos/" + id_proyecto + "/delete"
+//     let url = "https://app-gestion-riesgos.azurewebsites.net/riesgos/gestion_riesgos/" + id_proyecto + "/delete"
 
 //     var confirmacion = window.confirm("¿Estás seguro de borrar el riesgo?")
 //     if (confirmacion === true) {
@@ -232,7 +232,7 @@
 
 //     const url_id_proyecto1 = window.location.pathname;
 //     const id_proyecto1 = url_id_proyecto1.split('/').slice(3)
-//     let url = "http://127.0.0.1:5010/riesgos/gestion_riesgos/" + id_proyecto1 + "/update"
+//     let url = "https://app-gestion-riesgos.azurewebsites.net/riesgos/gestion_riesgos/" + id_proyecto1 + "/update"
 
 //     // primero pasa por el app y luego se sube a notion
 //     var confirmacion = window.confirm("¿Estás seguro de actualizar los valores?")
@@ -282,7 +282,7 @@
 //             }
 //             const url_id_proyecto = window.location.pathname;
 //             const id_proyecto = url_id_proyecto.split('/').slice(3)
-//             let url_acciones = "http://127.0.0.1:5010/riesgos/gestion_riesgos/" + id_proyecto + "/update-acciones"
+//             let url_acciones = "https://app-gestion-riesgos.azurewebsites.net/riesgos/gestion_riesgos/" + id_proyecto + "/update-acciones"
 //             actualizar_datos_acciones(url_acciones, datos_accion)
 //         }
 //     }
@@ -1864,7 +1864,7 @@
 
 //     const url_id_proyecto1 = window.location.pathname;
 //     const id_proyecto1 = url_id_proyecto1.split('/').slice(3)
-//     let url = "http://127.0.0.1:5010/riesgos/gestion_riesgos/" + id_proyecto1 + "/update"
+//     let url = "https://app-gestion-riesgos.azurewebsites.net/riesgos/gestion_riesgos/" + id_proyecto1 + "/update"
 
 //     // primero pasa por el app y luego se sube a notion
 //     var confirmacion = window.confirm("¿Estás seguro de actualizar los valores?")
@@ -1915,7 +1915,7 @@
 
 //             const url_id_proyecto = window.location.pathname;
 //             const id_proyecto = url_id_proyecto.split('/').slice(3)
-//             let url_acciones = "http://127.0.0.1:5010/riesgos/gestion_riesgos/" + id_proyecto + "/update-acciones"
+//             let url_acciones = "https://app-gestion-riesgos.azurewebsites.net/riesgos/gestion_riesgos/" + id_proyecto + "/update-acciones"
 //             actualizar_datos_acciones(url_acciones, datos_accion)
 //         }
 //     }
@@ -1929,7 +1929,7 @@
 //     const url_id_proyecto = window.location.pathname;
 //     const id_proyecto = url_id_proyecto.split('/').slice(3)
 
-//     let url = "http://127.0.0.1:5010/riesgos/gestion_riesgos/" + id_proyecto + "/delete"
+//     let url = "https://app-gestion-riesgos.azurewebsites.net/riesgos/gestion_riesgos/" + id_proyecto + "/delete"
 
 //     var confirmacion = window.confirm("¿Estás seguro de borrar el riesgo?")
 //     if (confirmacion === true) {

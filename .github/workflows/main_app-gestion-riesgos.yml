@@ -26,12 +26,9 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-
-      - name: List files in directory
-        run: ls
-
+      
       - name: Install dependencies
-        run: pip install -r gestion-riesgos/requirements.txt
+        run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -68,9 +65,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AD360EFC3CC9462D84976EF536E1B52F }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_65EB6BBF0F1942E7A159C1B6F206673C }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6C7F7FF191F14BC39D92E6AD08E0B1FA }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_CC3AFCFB49994ABC86855A76DBE040E4 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_26FEEC7A8537498CB05343BCAFD6972A }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9B65A41FBB6843C8BBA7624EF8900E4E }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
